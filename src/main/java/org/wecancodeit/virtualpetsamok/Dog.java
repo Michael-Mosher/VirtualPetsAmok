@@ -13,5 +13,9 @@ class Dog extends OrganicPet implements iDog {
 		this.incrementSignificantStimulation();
 	}
 
+	public void giveBacon() {
+		super.giveTreat();
+	}
+
 
 }

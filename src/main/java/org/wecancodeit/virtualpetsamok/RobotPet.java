@@ -17,4 +17,9 @@ abstract class RobotPet extends VirtualPet
 		this.decrementHealthBy(10);
 		this.decrementStimulationBy(10);
 	}
+
+	public void giveSolidStateMemory() {
+		this.incrementSignificantStimulation();
+		this.incrementModestHealth();
+	}
 }

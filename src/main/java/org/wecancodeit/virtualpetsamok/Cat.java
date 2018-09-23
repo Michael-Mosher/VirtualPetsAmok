@@ -7,4 +7,13 @@ class Cat extends OrganicPet implements iCat {
 		super(name, description);
 	}
 
+	public void giveTuna() {
+		super.giveTreat();
+	}
+
+	@Override
+	public void herd() {
+		this.incrementModestStimulation();
+	}
+
 }

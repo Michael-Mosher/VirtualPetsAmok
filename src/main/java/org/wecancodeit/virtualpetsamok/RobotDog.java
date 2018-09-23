@@ -10,6 +10,7 @@ class RobotDog extends RobotPet implements iDog
 	@Override
 	public void walk() {
 		this.incrementModestHealth();
+		this.incrementSignificantStimulation();
 	}
 
 }

@@ -8,4 +8,9 @@ class RobotCat extends RobotPet implements iCat
 		super(name, description);
 	}
 
+	@Override
+	public void herd() {
+		this.incrementModestStimulation();
+	}
+
 }

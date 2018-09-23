@@ -84,4 +84,10 @@ abstract class OrganicPet extends VirtualPet {
 		this.decrementHappinessBy(10);
 		super.tick();
 	}
+
+	protected void giveTreat()
+	{
+		this.incrementModestFullness();
+		this.incrementSignificantHappiness();
+	}
 }
