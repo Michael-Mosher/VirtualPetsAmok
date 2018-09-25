@@ -1,6 +1,6 @@
 package org.wecancodeit.virtualpetsamok;
 
-class RobotCat extends RobotPet implements iCat
+class RobotCat extends RoboticPet implements iCat
 {
 
 	public RobotCat(String name, String description)
@@ -13,4 +13,9 @@ class RobotCat extends RobotPet implements iCat
 		this.incrementModestStimulation();
 	}
 
+	@Override
+	public String getDescription()
+	{
+		return super.getDescription() + " cat";
+	}
 }

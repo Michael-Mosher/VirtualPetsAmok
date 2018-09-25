@@ -1,9 +1,9 @@
 package org.wecancodeit.virtualpetsamok;
 
-abstract class RobotPet extends VirtualPet
+abstract class RoboticPet extends VirtualPet
 {
 
-	public RobotPet(String name, String description)
+	public RoboticPet(String name, String description)
 	{
 		super(name, description);
 	}
@@ -21,5 +21,11 @@ abstract class RobotPet extends VirtualPet
 	public void giveSolidStateMemory() {
 		this.incrementSignificantStimulation();
 		this.incrementModestHealth();
+	}
+	
+	@Override
+	public String getDescription()
+	{
+		return super.getDescription() + " a synthetic";
 	}
 }

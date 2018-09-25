@@ -15,5 +15,16 @@ class Cat extends OrganicPet implements iCat {
 	public void herd() {
 		this.incrementModestStimulation();
 	}
+	
+	public void cleanLitter()
+	{
+		incrementSignificantHealth();
+	}
+	
+	@Override
+	public String getDescription()
+	{
+		return super.getDescription() + " cat";
+	}
 
 }

@@ -27,5 +27,14 @@ abstract class AbstractVirtualPet implements IVirtualPet {
 	
 	abstract protected void setHealthMultiplier(double dNewMultiplier);
 	
-	abstract protected void setDescription(String new_description);
+	public AbstractVirtualPet getPet()
+	{
+		return this;
+	}
+	
+	public String toString()
+	{
+		return this.getPet() + "";
+	}
+	
 }

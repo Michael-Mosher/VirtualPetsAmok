@@ -7,10 +7,10 @@ import org.junit.Test;
 
 public class PetTest
 {
-	RobotPet oRobotDog = new RobotDog("CNDR", "DOS attacker sitting at your feet with NYTimes.com");
+	RoboticPet oRobotDog = new RobotDog("CNDR", "DOS attacker sitting at your feet with NYTimes.com");
 	Cat oCatTest = new Cat("Argus", "Bruiser");
 	Dog oDogTest = new Dog("Goliath", "Massive");
-	RobotPet oRobotCat = new RobotCat("SABR", "Ferocity, automated");
+	RoboticPet oRobotCat = new RobotCat("SABR", "Ferocity, automated");
 	
 	@Test
 	public void assertCatFullness100AfterOneTickOneFeed()

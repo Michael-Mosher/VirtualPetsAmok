@@ -2,9 +2,9 @@ package org.wecancodeit.virtualpetsamok;
 
 abstract class OrganicPet extends VirtualPet {
 
-	private int happiness;
 	private int iMaxHappiness = 100;
-	private int iMinHappiness = 100;
+	private int iMinHappiness = 1;
+	private int happiness = iMaxHappiness;
 	private int iFullHappiness = iMaxHappiness;
 	private int iSignificantHappiness = 30;
 	private int iModestHappiness = 10;
@@ -13,7 +13,6 @@ abstract class OrganicPet extends VirtualPet {
 	
 	public OrganicPet(String name, String description) {
 		super(name, description);
-		this.setHappiness(this.iMaxHappiness);
 	}
 
 	private void setHappiness(int iNewHappiness)
@@ -81,6 +80,7 @@ abstract class OrganicPet extends VirtualPet {
 	
 	@Override
 	public void tick() {
+		System.out.println("OrganicPet.tick just before decrementHappinessBy");
 		this.decrementHappinessBy(10);
 		super.tick();
 	}
@@ -89,5 +89,22 @@ abstract class OrganicPet extends VirtualPet {
 	{
 		this.incrementModestFullness();
 		this.incrementSignificantHappiness();
+	}
+
+	public void water() {
+		this.incrementSignificantHydration();
+	}
+	
+	@Override
+	public String toString()
+	{
+		return super.toString() + " Happiness: " + this.getHappiness()
+				+ " out of: " + this.iMaxHappiness;
+	}
+	
+	@Override
+	public String getDescription()
+	{
+		return super.getDescription() + " an organic";
 	}
 }

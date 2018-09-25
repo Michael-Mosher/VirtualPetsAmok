@@ -1,6 +1,6 @@
 package org.wecancodeit.virtualpetsamok;
 
-class RobotDog extends RobotPet implements iDog
+class RobotDog extends RoboticPet implements iDog
 {
 
 	public RobotDog(String name, String description) {
@@ -13,4 +13,9 @@ class RobotDog extends RobotPet implements iDog
 		this.incrementSignificantStimulation();
 	}
 
+	@Override
+	public String getDescription()
+	{
+		return super.getDescription() + " dog";
+	}
 }

@@ -17,5 +17,9 @@ class Dog extends OrganicPet implements iDog {
 		super.giveTreat();
 	}
 
-
+	@Override
+	public String getDescription()
+	{
+		return super.getDescription() + " dog";
+	}
 }
