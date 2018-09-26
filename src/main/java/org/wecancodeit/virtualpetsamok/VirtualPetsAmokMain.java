@@ -19,29 +19,57 @@ class VirtualPetsAmokMain {
 		String sCurrentInput = "";
 		String sTempName = "";
 		String sTempDescription = "";
+		String sOutput = "";
 		while(true) {
 			shelter.tickAll();
 			shelter.resetIndex();
 			for (;shelter.isValidIndex(); shelter.next()) {
-				if(shelter.getCurrentHydration()<2) VirtualPetsAmokMain.processNeglectedCurrent(shelter);
-				else if( shelter.getCurrentFullness()<2) VirtualPetsAmokMain.processNeglectedCurrent(shelter);
-				else if(shelter.getCurrentStimulation()<2 ) VirtualPetsAmokMain.processNeglectedCurrent(shelter);
-				else if(shelter.getCurrentHealth()<2 ) VirtualPetsAmokMain.processNeglectedCurrent(shelter);
-				else if(shelter.getCurrentHappiness()<2) VirtualPetsAmokMain.processNeglectedCurrent(shelter);
+				if(shelter.getCurrentHydration()<2) {
+					VirtualPetsAmokMain.processNeglectedCurrent(shelter);
+					sOutput = "Sarah's face is twisted with grief. \"I'll have to take care of " + shelter.getCurrentName() + " myself.\"";
+					processDelayedOutput(sOutput);
+				} else if( shelter.getCurrentFullness()<2) {
+					VirtualPetsAmokMain.processNeglectedCurrent(shelter);
+					sOutput = "Sarah's face is twisted with grief. \"I'll have to take care of " + shelter.getCurrentName() + " myself.\"";
+					processDelayedOutput(sOutput);
+				} else if(shelter.getCurrentStimulation()<2 ) {
+					VirtualPetsAmokMain.processNeglectedCurrent(shelter);
+					sOutput = "Sarah's face is twisted with grief. \"I'll have to take care of " + shelter.getCurrentName() + " myself.\"";
+					processDelayedOutput(sOutput);
+				} else if(shelter.getCurrentHealth()<2 ) {
+					VirtualPetsAmokMain.processNeglectedCurrent(shelter);
+					sOutput = "Sarah's face is twisted with grief. \"I'll have to take care of " + shelter.getCurrentName() + " myself.\"";
+					processDelayedOutput(sOutput);
+				} else if(shelter.getCurrentHappiness()<2) {
+					VirtualPetsAmokMain.processNeglectedCurrent(shelter);
+					sOutput = "Sarah's face is twisted with grief. \"I'll have to take care of " + shelter.getCurrentName() + " myself.\"";
+					processDelayedOutput(sOutput);
+				}
 			}
 			VirtualPetsAmokMain.outputOptions(shelter);
 			if((sCurrentInput = oUserInput.nextLine()).trim().equalsIgnoreCase("quit")) break;
 			switch(sCurrentInput.trim()) {
 			case "1": // feed the pets
 				shelter.feedAll();
+				sOutput = "A din of sloshing, purring, and whirring makes the air alive with joy.";
+				processDelayedOutput(sOutput);
 				break;
 			case "2":
 				shelter.waterAll();
+				sOutput = "Stopping cruelty begins with a clean bowl of pure water.";
+				processDelayedOutput(sOutput);
 				break;
 			case "3":
 				VirtualPetsAmokMain.outputIndividualPetList(shelter);
 				if((sCurrentInput = oUserInput.nextLine()).trim().equalsIgnoreCase("quit")) break;
 				shelter.playWith(Integer.parseInt(sCurrentInput) -1);
+				int iFindIndex = 0;
+				for(shelter.resetIndex();shelter.isValidIndex(); shelter.next()) {
+					if((Integer.parseInt(sCurrentInput) -1)==iFindIndex) sCurrentInput = shelter.getCurrentName();
+					iFindIndex++;
+				}
+				sOutput = "Sarah says, \"You and " + sCurrentInput + " look very happy together. The joy can last a lifetime. Let me show you how simple the adoption process is.\"";
+				processDelayedOutput(sOutput);
 				break;
 			/*
 			 * "04. Walk dogs\n" +
@@ -58,33 +86,51 @@ class VirtualPetsAmokMain {
 			 */
 			case "4":
 				shelter.walkAll();
+				sOutput = "You walked the dogs ... and the dogs walked you.";
+				processDelayedOutput(sOutput);
 				break;
 			case "5":
 				shelter.herdAll();
-				System.out.println("An exercise in futility.");
+				sOutput = "An exercise in futility.";
+				processDelayedOutput(sOutput);
 				break;
 			case "6":
 				shelter.cleanAllCages();
+				sOutput = "Sarah smiling, \"It smells better already, and I can see our little friends appreciate it."
+						+ " Feel free to take that with you. It make an amazing fertilizer. You're welcome.\"";
+				processDelayedOutput(sOutput);
 				break;
 			case "7":
 				shelter.cleanLitter();
+				sOutput = "The cats assemble to inspect your work.";
+				processDelayedOutput(sOutput);
 				break;
 			case "8":
 				shelter.oilAll();
+				sOutput = "Processing lights flash so quickly as to appear steady as the waste heat dissipates. Mechanical joints move silently.";
+				processDelayedOutput(sOutput);
 				break;
 			case "9":
 				shelter.treatDogs();
+				sOutput = "Bacon. The key ingredient to predator taming and domestication";
+				processDelayedOutput(sOutput);
 				break;
 			case "10":
 				shelter.treatCats();
+				sOutput = "The most willful, aloof, and independent are humbled by gastral pleasure.";
+				processDelayedOutput(sOutput);
 				break;
 			case "11":
 				shelter.treatRobotics();
+				sOutput = "Another round of Deep Learning image analysis begins in 3 ... 2 ... 1";
+				processDelayedOutput(sOutput);
 				break;
 			case "12":
 				VirtualPetsAmokMain.outputIndividualPetList(shelter);
 				if((sCurrentInput = oUserInput.nextLine()).trim().equalsIgnoreCase("quit")) break;
 				shelter.adoptOne(Integer.parseInt(sCurrentInput) -1);
+				sOutput = "Sarah is silent with tears of joy.";
+				processDelayedOutput(sOutput);
 				break;
 			case "13":
 				String sKingdomChoice = new String();
@@ -127,13 +173,29 @@ class VirtualPetsAmokMain {
 				} else {
 					shelter.admitPet(oAPet);
 				}
+				sOutput = "Sarah exclaims, \"Awwww ... what a cute addition!!\" " + sTempName + " will have a happy, temporary home.";
+				processDelayedOutput(sOutput);
 				break;
 			case "14":
-				System.out.println("Sarah MacLaughlin will take it from here...");
-				System.exit(0);
+			    sOutput = "Sarah MacLaughlin will take it from here...";
+			    processDelayedOutput(sOutput);
+			    System.exit(0);
 			default:
 				break;
 			}
+		}
+	}
+
+	private static void processDelayedOutput(String sOutput) {
+		try {
+			for(String piece : sOutput.split("[ ]+")) {
+				long lMilliSecondsBase = 100L;
+				long lMilliSecondsFinal = lMilliSecondsBase * piece.length();
+				Thread.sleep(lMilliSecondsFinal);
+				System.out.print(" " + piece);
+			}
+		} catch(InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -143,24 +205,11 @@ class VirtualPetsAmokMain {
 	}
 
 	private static void outputOptions(VirtualPetShelter shelter) {
-		String payload = "*---------- Shelter Occupants ----------*\n";
-		String sCurrentName = "";
-		String[] aCurrentPet;
+		String sOutput =  "\n\n*---------- Shelter Occupants ----------*\n";
+		String payload = "";
 		String[] aPetSets = new String[shelter.getShelterOccupancy()];// {};
-		int iLongestName = 0;
-		int iNumericalIndex = 1;
-		int iMaxClmnWidth = 16;
-//		int iMinNameWidth = (" " + aPetSets[0][0] + " ").length();
-		int iCurrentTabQty = 0;
-		int iMaxStatWidth = 3;
-//		int iMaxSecondClmnWidth = (" " + aPetSets[0][1] + " ").length();
-//		int iMaxThirdClmnWidth = (" " + aPetSets[0][2] + " ").length();
-//		int iMaxFourthClmnWidth = (" " + aPetSets[0][3] + " ").length();
-//		int iMaxFifthClmnWidth = (" " + aPetSets[0][4] + " ").length();
 		int iOuterIndex = 0;
-		int iInnerIndex = 0;
-		int iTabStop = 8;
-		
+		processDelayedOutput(sOutput);
 		shelter.resetIndex();
 		if(shelter.isValidIndex()) {
 			for( ; shelter.isValidIndex(); shelter.next()) {

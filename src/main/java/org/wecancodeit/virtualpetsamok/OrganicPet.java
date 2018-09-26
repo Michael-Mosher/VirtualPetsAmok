@@ -80,7 +80,6 @@ abstract class OrganicPet extends VirtualPet {
 	
 	@Override
 	public void tick() {
-		System.out.println("OrganicPet.tick just before decrementHappinessBy");
 		this.decrementHappinessBy(10);
 		super.tick();
 	}
@@ -98,7 +97,7 @@ abstract class OrganicPet extends VirtualPet {
 	@Override
 	public String toString()
 	{
-		return super.toString() + " Happiness: " + this.getHappiness()
+		return super.toString() + " | Happiness: " + this.getHappiness()
 				+ " out of: " + this.iMaxHappiness;
 	}
 	

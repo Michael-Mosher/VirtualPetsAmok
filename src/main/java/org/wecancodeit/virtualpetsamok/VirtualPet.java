@@ -283,11 +283,11 @@ public class VirtualPet extends AbstractVirtualPet {
 	@Override
 	public String toString()
 	{
-		return "Name: " + this.getName() + " Hydration: " + this.getHydration()
+		return "Name: " + this.getName() + " |*|" + " Hydration: " + this.getHydration()
 				+ " out of: " + this.iMaxHydration
-				+ " Fullness: " + this.getFullness() + " out of: " + this.iMaxFullness
-				+ " Stimulation: " + this.getStimulation() + " out of: " + this.iMaxStimulation
-				+ " Health: " + this.getHealth() + " out of: " + this.iMaxHealth;
+				+ " | Fullness: " + this.getFullness() + " out of: " + this.iMaxFullness
+				+ " | Stimulation: " + this.getStimulation() + " out of: " + this.iMaxStimulation
+				+ " | Health: " + this.getHealth() + " out of: " + this.iMaxHealth;
 	}
 
 }

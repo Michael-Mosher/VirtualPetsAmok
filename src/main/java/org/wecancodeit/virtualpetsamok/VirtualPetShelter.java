@@ -16,8 +16,6 @@ class VirtualPetShelter {
 	public void admitPet(AbstractVirtualPet new_pet)
 	{
 		AbstractCageDnaVP oPetInsert;
-		System.out.println("admitPet. The new_pet: " + new_pet);
-		System.out.println("admitPet. Is organic: " + (new_pet instanceof OrganicPet));
 		if(!(new_pet instanceof AbstractCageDnaVP)){
 			if(new_pet.getPet() instanceof OrganicPet) oPetInsert = new DirtyCage(new_pet);
 			else if(new_pet.getPet() instanceof RoboticPet) oPetInsert = new FaradayCage(new_pet);
